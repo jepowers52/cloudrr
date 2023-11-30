@@ -6,10 +6,11 @@ put melons in a shopping cart.
 Authors: Joel Burton, Christian Fernandez, Meggie Mahnken, Katie Byers.
 """
 
-from flask import Flask, render_template, redirect, flash
+from flask import Flask, render_template, redirect, flash, session
 import jinja2
 
 import melons
+
 
 app = Flask(__name__)
 
@@ -50,7 +51,7 @@ def show_melon(melon_id):
     Show all info about a melon. Also, provide a button to buy that melon.
     """
 
-    melon = melons.get_by_id("meli")
+    melon = melons.get_by_id(melon_id)
     print(melon)
     return render_template("melon_details.html",
                            display_melon=melon)
@@ -67,15 +68,22 @@ def add_to_cart(melon_id):
     # TODO: Finish shopping cart functionality
 
     # The logic here should be something like:
-    #
+    # session['cart']
+    # session > cart={} > cart['melon-id']+=qty
+    # animals['pig'] = animals.get['pig',0]+1
     # - check if a "cart" exists in the session, and create one (an empty
-    #   dictionary keyed to the string "cart") if not
+    if 'cart' not in session:
+        session['cart'] = {}
+
     # - check if the desired melon id is the cart, and if not, put it in
     # - increment the count for that melon id by 1
+
+    session['cart'][melon_id] = session['cart'].get(melon_id,0) +1
+
     # - flash a success message
     # - redirect the user to the cart page
-
-    return "Oops! This needs to be implemented!"
+    # flash(session['cart'])
+    return redirect("/cart")
 
 
 @app.route("/cart")
@@ -83,6 +91,22 @@ def show_shopping_cart():
     """Display content of shopping cart."""
 
     # TODO: Display the contents of the shopping cart.
+
+    # loop over cart dict, create list pulling info from melon class
+    # total cart is list of lists [common name. qty, price, total]
+    # running total of totals to get cart total
+    # melons_get_byID
+    cart_melons_with_info = []
+    cart_total = 0
+    
+
+    for melon in session['cart']:
+        current_melon = melons.get_by_id(melon)
+        qty = session['cart'][melon]
+        total = qty * float(current_melon.price)
+        cart_melons_with_info.append([current_melon.common_name, qty, "{:.2f}".format(current_melon.price), "{:.2f}".format(total)])
+        cart_total += total
+    
 
     # The logic here will be something like:
     #
@@ -100,7 +124,7 @@ def show_shopping_cart():
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
 
-    return render_template("cart.html")
+    return render_template("cart.html", melon_cart_list = cart_melons_with_info, cart_total = "{:.2f}".format(cart_total))
 
 
 @app.route("/login", methods=["GET"])
