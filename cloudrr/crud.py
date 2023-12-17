@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Animal, Pet, connect_to_db
+from model import db, User, Animal, User_pet_rating, connect_to_db
 
 
 def create_user(username, email, password):
@@ -23,13 +23,15 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_animal(title, overview, release_date, poster_path):
+def create_animal(animal_id, species, location, age, name, image, petfinder_link):
     """Create and return a new movie."""
     animal = Animal(
-        title=title,
-        overview=overview,
-        release_date=release_date,
-        poster_path=poster_path,
+        animal_id=animal_id,
+        species=species,
+        location=location,
+        name=name,
+        image=image,
+        petfinder_link=petfinder_link,
     )
     return animal
 
@@ -42,12 +44,12 @@ def get_animal_by_id(movie_id):
     return Animal.query.get(movie_id)
 
 
-def create_pet(user_id, animal_id, pet):
+def create_pet_rating(user_id, animal_id, pet_rating):
     """Create and return new pet rating."""
-    new_pet = Pet(
+    new_pet = User_pet_rating(
         user_id=user_id,
         animal_id=animal_id,
-        pet=pet
+        pet_rating=pet_rating
     )
 
     return new_pet
@@ -55,7 +57,7 @@ def create_pet(user_id, animal_id, pet):
 def get_rating_by_user_and_animal(user_id, animal_id):
     """Returns a raiting based off user_id and animal_id"""
 
-    return Pet.query.filter(Pet.user_id ==user_id,  Pet.animal_id == animal_id).first()
+    return User_pet_rating.query.filter(User_pet_rating.user_id ==user_id,  User_pet_rating.animal_id == animal_id).first()
 
 if __name__ == '__main__':
     from server import app

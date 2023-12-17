@@ -1,0 +1,39 @@
+[
+    {
+        "username": "user0",
+        "email": "user0@user.email",
+        "password": "asdf"
+  
+    },
+    {
+      "username": "user1",
+      "email": "user1@user.email",
+      "password": "asdf"
+
+    },
+    {
+        "username": "user2",
+        "email": "user2@user.email",
+        "password": "asdf"
+  
+      },
+      {
+        "username": "user3",
+        "email": "user3@user.email",
+        "password": "asdf"
+  
+      },
+      {
+        "username": "user4",
+        "email": "user4@user.email",
+        "password": "asdf"
+  
+      },
+      {
+        "username": "user5",
+        "email": "user5@user.email",
+        "password": "asdf"
+  
+      }
+
+]

@@ -1,0 +1,94 @@
+[
+    {
+        "animal_id": "dog-001",
+        "species": "dog",
+        "location": "OR",
+        "age": "young",
+        "name": "spot",
+        "image": "https://joyrideharness.com/cdn/shop/articles/AdobeStock_274099078.jpg?v=1620400547",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "dog-002",
+        "species": "dog",
+        "location": "OR",
+        "age": "young",
+        "name": "freckle",
+        "image": "https://joyrideharness.com/cdn/shop/articles/AdobeStock_274099078.jpg?v=1620400547",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "dog-003",
+        "species": "dog",
+        "location": "OR",
+        "age": "adult",
+        "name": "speck",
+        "image": "https://joyrideharness.com/cdn/shop/articles/AdobeStock_274099078.jpg?v=1620400547",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "dog-004",
+        "species": "dog",
+        "location": "CA",
+        "age": "adult",
+        "name": "dot",
+        "image": "https://joyrideharness.com/cdn/shop/articles/AdobeStock_274099078.jpg?v=1620400547",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "dog-005",
+        "species": "dog",
+        "location": "CA",
+        "age": "senior",
+        "name": "chip",
+        "image": "https://joyrideharness.com/cdn/shop/articles/AdobeStock_274099078.jpg?v=1620400547",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+
+
+    {
+        "animal_id": "cat-001",
+        "species": "cat",
+        "location": "OR",
+        "age": "young",
+        "name": "baritone",
+        "image": "https://thumbs.dreamstime.com/z/funny-view-sphynx-cat-standing-stare-back-tail-like-question-sign-isolated-black-background-funny-sphynx-cat-128956291.jpg",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "cat-002",
+        "species": "cat",
+        "location": "OR",
+        "age": "young",
+        "name": "professor floofybeans",
+        "image": "https://thumbs.dreamstime.com/z/funny-view-sphynx-cat-standing-stare-back-tail-like-question-sign-isolated-black-background-funny-sphynx-cat-128956291.jpg",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "cat-003",
+        "species": "cat",
+        "location": "OR",
+        "age": "adult",
+        "name": "cheesesteak",
+        "image": "https://thumbs.dreamstime.com/z/funny-view-sphynx-cat-standing-stare-back-tail-like-question-sign-isolated-black-background-funny-sphynx-cat-128956291.jpg",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "cat-004",
+        "species": "cat",
+        "location": "CA",
+        "age": "adult",
+        "name": "mugwort",
+        "image": "https://thumbs.dreamstime.com/z/funny-view-sphynx-cat-standing-stare-back-tail-like-question-sign-isolated-black-background-funny-sphynx-cat-128956291.jpg",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    },
+    {
+        "animal_id": "cat-005",
+        "species": "cat",
+        "location": "CA",
+        "age": "senior",
+        "name": "Po",
+        "image": "https://thumbs.dreamstime.com/z/funny-view-sphynx-cat-standing-stare-back-tail-like-question-sign-isolated-black-background-funny-sphynx-cat-128956291.jpg",
+        "petfinder_link": "https://www.petfinder.com/dogs-and-puppies/"
+    }
+]

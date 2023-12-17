@@ -43,25 +43,25 @@ class Animal(db.Model):
 
 
 
-class Pet(db.Model):
+class User_pet_rating(db.Model):
     """A rating of Pet or Pass."""
 
 
-    __tablename__ = "pets"
+    __tablename__ = "user-pet-ratings"
     
-    pet_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    pet_rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     animal_id = db.Column(db.Integer, db.ForeignKey("animals.animal_id"))
-    pet = db.Column(db.Boolean)
+    pet_rating = db.Column(db.Boolean)
     
 
     def __repr__(self):
-        return f"<Pet pet_id={self.pet_id} pet={self.pet}>"
+        return f"<Pet pet_id={self.pet_rating_id} pet={self.pet_rating}>"
 
 
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///pets", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///cloudrrDB", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
