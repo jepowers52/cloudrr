@@ -12,9 +12,9 @@ def create_user(username, email, password):
 
 
 
-def get_user_by_id(user_id):
-    """Return a user by id."""
-    return User.query.get(user_id)
+def get_user_by_username(username):
+    """Return a user by username."""
+    return User.query.get(username)
 
 
 def get_user_by_email(email):

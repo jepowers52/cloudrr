@@ -17,8 +17,8 @@ model.db.create_all()
 
 ############################ animals ########################################
 
-with open('data/test-animal-data.json') as file:
-    animal_data = json.loads(file.read())
+with open('data/test-animal-data.json') as file1:
+    animal_data = json.loads(file1.read())
 
 
 animals_in_db = []
@@ -41,60 +41,46 @@ model.db.session.commit()
 
 ############################ users ########################################
 
-with open('data/test-animal-data.json') as f:
-    movie_data = json.loads(f.read())
+with open('data/test-user-data.json') as file2:
+    user_data = json.loads(file2.read())
 
 
-movies_in_db = []
-for movie in movie_data:
-    title, overview, poster_path = (
-        movie["title"],
-        movie["overview"],
-        movie["poster_path"],
+users_in_db = []
+for user in user_data:
+    username, email, password = (
+        user["username"],
+        user["email"],
+        user["password"],
     )
-    release_date = datetime.strptime(movie["release_date"], "%Y-%m-%d")
+    db_user = crud.create_user(username, email, password)
+    users_in_db.append(db_user)
 
-    db_movie = crud.create_movie(title, overview, release_date, poster_path)
-    movies_in_db.append(db_movie)
-
-model.db.session.add_all(movies_in_db)
+model.db.session.add_all(users_in_db)
 model.db.session.commit() 
 
 ############################## pet ratings ######################################
 
-with open('data/movies.json') as f:
-    movie_data = json.loads(f.read())
+with open('data/test-user-data.json') as file3:
+    pet_rating_data = json.loads(file3.read())
 
+    # { "username": "user2",
+    # "animal_id": "dog-004",
+    #  "pet": "FALSE"},
 
-movies_in_db = []
-for movie in movie_data:
-    title, overview, poster_path = (
-        movie["title"],
-        movie["overview"],
-        movie["poster_path"],
+pet_ratings_in_db = []
+
+for pet_rating in pet_rating_data:
+    user_id = crud.get_user_by_username(pet_rating["username"])
+    animal_id, pet_rating = (
+        pet_rating["animal_id"],
+        pet_rating["pet_rating"],
     )
-    release_date = datetime.strptime(movie["release_date"], "%Y-%m-%d")
 
-    db_movie = crud.create_movie(title, overview, release_date, poster_path)
-    movies_in_db.append(db_movie)
+    db_pet_rating = crud.create_pet_rating(user_id, animal_id, pet_rating)
+    pet_ratings_in_db.append(db_pet_rating)
 
-model.db.session.add_all(movies_in_db)
+model.db.session.add_all(pet_ratings_in_db)
 model.db.session.commit() 
 
 ####################################################################
 
-for n in range(10):
-    email = f"user{n}@test.com"  # Voila! A unique email!
-    password = "test"
-
-    user = crud.create_user(email, password)
-    model.db.session.add(user)
-
-    for _ in range(10):
-        random_movie = choice(movies_in_db)
-        score = randint(1, 5)
-
-        rating = crud.create_rating(user, random_movie, score)
-        model.db.session.add(rating)
-
-model.db.session.commit()

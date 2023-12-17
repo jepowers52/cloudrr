@@ -56,7 +56,7 @@ class User_pet_rating(db.Model):
     
 
     def __repr__(self):
-        return f"<Pet pet_id={self.pet_rating_id} pet={self.pet_rating}>"
+        return f"<User_pet_rating pet_rating_id={self.pet_rating_id} pet_rating={self.pet_rating}>"
 
 
 
