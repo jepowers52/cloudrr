@@ -60,7 +60,7 @@ model.db.session.commit()
 
 ############################## pet ratings ######################################
 
-with open('data/test-user-data.json') as file3:
+with open('data/test-pet-data.json') as file3:
     pet_rating_data = json.loads(file3.read())
 
     # { "username": "user2",
@@ -69,12 +69,17 @@ with open('data/test-user-data.json') as file3:
 
 pet_ratings_in_db = []
 
-for pet_rating in pet_rating_data:
-    user_id = crud.get_user_by_username(pet_rating["username"])
-    animal_id, pet_rating = (
-        pet_rating["animal_id"],
-        pet_rating["pet_rating"],
+for rating in pet_rating_data:
+
+    username, animal_id, pet_rating = (
+        rating["username"],
+        rating["animal_id"],
+        rating["pet_rating"],
     )
+
+
+    # pet_rating = bool(pet_rating)
+    user_id = crud.get_userid_by_username(username)
 
     db_pet_rating = crud.create_pet_rating(user_id, animal_id, pet_rating)
     pet_ratings_in_db.append(db_pet_rating)

@@ -13,7 +13,8 @@ class User(db.Model):
 
     user_id = db.Column(db.Integer,
                         autoincrement=True,
-                        primary_key=True)
+                        primary_key=True,
+                        unique=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
@@ -27,7 +28,7 @@ class Animal(db.Model):
     
     __tablename__ = "animals"
 
-    animal_id = db.Column(db.String, primary_key=True)
+    animal_id = db.Column(db.String, primary_key=True, unique=True)
     species = db.Column(db.String)
     location = db.Column(db.String)   # state from animal address 
     age = db.Column(db.String)  #ex: young
@@ -47,12 +48,12 @@ class User_pet_rating(db.Model):
     """A rating of Pet or Pass."""
 
 
-    __tablename__ = "user-pet-ratings"
+    __tablename__ = "user_pet_ratings"
     
     pet_rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    animal_id = db.Column(db.Integer, db.ForeignKey("animals.animal_id"))
-    pet_rating = db.Column(db.Boolean)
+    animal_id = db.Column(db.String, db.ForeignKey("animals.animal_id"))
+    pet_rating = db.Column(db.String)
     
 
     def __repr__(self):

@@ -12,15 +12,17 @@ def create_user(username, email, password):
 
 
 
-def get_user_by_username(username):
+def get_userid_by_username(username):
     """Return a user by username."""
-    return User.query.get(username)
+
+    user = User.query.filter_by(username=username).first()
+    return user.user_id
 
 
-def get_user_by_email(email):
-    """Return a user by email."""
+# def get_user_by_email(email):
+#     """Return a user by email."""
 
-    return User.query.filter(User.email == email).first()
+#     return User.query.filter(User.email == email).first()
 
 
 def create_animal(animal_id, species, location, age, name, image, petfinder_link):
@@ -36,12 +38,12 @@ def create_animal(animal_id, species, location, age, name, image, petfinder_link
     return animal
 
 
-def get_animals():
-    return Animal.query.order_by('name').all()
+# def get_animals():
+#     return Animal.query.order_by('name').all()
 
 
-def get_animal_by_id(movie_id):
-    return Animal.query.get(movie_id)
+# def get_animal_by_id(animal_id):
+#     return Animal.query.get(animal_id)
 
 
 def create_pet_rating(user_id, animal_id, pet_rating):
@@ -54,10 +56,10 @@ def create_pet_rating(user_id, animal_id, pet_rating):
 
     return new_pet
 
-def get_rating_by_user_and_animal(user_id, animal_id):
-    """Returns a raiting based off user_id and animal_id"""
+# def get_rating_by_user_and_animal(user_id, animal_id):
+#     """Returns a raiting based off user_id and animal_id"""
 
-    return User_pet_rating.query.filter(User_pet_rating.user_id ==user_id,  User_pet_rating.animal_id == animal_id).first()
+#     return User_pet_rating.query.filter(User_pet_rating.user_id ==user_id,  User_pet_rating.animal_id == animal_id).first()
 
 if __name__ == '__main__':
     from server import app
