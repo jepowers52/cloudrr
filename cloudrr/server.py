@@ -44,25 +44,25 @@ def request_access_token():
     print(access_results['access_token'])
     return access_results['access_token']
 
-@app.route("/animal-search")
+@app.route("/animals")
 # DO THIS IN POSTMAN
 def animal_search_request():
-    species = request.args.get('species')
-    animal_location = request.args.get('animal-location')
-    animal_age = request.args.get('animal_age')
+    type = request.args.get('species')
+    location = request.args.get('animal-location')
+    age = request.args.get('animal_age')
     # BLOCKED - how to add a header in a GET request to hold access token?
 
-    url = 'https://api.petfinder.com/v2/animals'
-    payload = {'type' : species,
-               'location' : animal_location, 
-               'age' : animal_age
+    url = 'https://api.petfinder.com/v2'
+    payload = {'type' : type,
+               'location' : location, 
+               'age' : age
     }
     access_token = request_access_token()
     headers = {'Authorization': f'Bearer {access_token}'}
     #response = requests.request("GET", url, headers=headers, data=payload)
-
-    res = requests.request("GET", url, headers=headers, data=payload)
-    print(type(res))
+    # "https://api.petfinder.com/v2/animals?type=Dog&age=Adult&location=OR"
+    res = requests.get(url, headers=headers, data=payload)
+    # print(type(res))
     print(res)
     animal_results = res.json()
 
