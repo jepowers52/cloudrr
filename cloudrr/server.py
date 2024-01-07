@@ -5,6 +5,8 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db, db
 import crud
 from jinja2 import StrictUndefined
+import os
+import requests
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -12,12 +14,6 @@ app.jinja_env.undefined = StrictUndefined
 
 API_KEY = os.environ['PETFINDER_KEY']
 API_SECRET = os.environ['PETFINDER_SECRET']
-
-location_states = ["AL", "KY", "OH", "AK", "LA", "OK", "AZ","ME", "OR", "AR", "MD",
-                    "PA", "AS", "MA", "CA", "MI", "RI", "CO", "MN", "SC", "CT", "MS", 
-                    "SD", "DE", "MO", "TN", "DC", "MT", "TX", "FL", "NE", "GA", 
-                    "NV", "UT", "NH", "VT", "HI", "NJ", "VA", "ID", "NM", "VI", "IL",
-                    "NY", "WA", "IN", "NC", "WV", "IA", "ND", "WI", "KS", "WY"]
 
 
 @app.route("/")
@@ -28,39 +24,49 @@ def homepage():
 
 @app.route("/search")
 def searchpage():
-    return render_template('search.html', location_states=location_states)
+    return render_template('search.html')
 
-@app.route("/request-acess-token", "POST")
+@app.route("/request-access-token",  methods=['POST'])
 def request_access_token():
     # post request to API to provide access token. access token needs to be added into the header of all requests 
     # "grant_type=client_credentials&client_id={CLIENT-ID}&client_secret={CLIENT-SECRET}" https://api.petfinder.com/v2/oauth2/token
-    #
-    pass # return access_token
+    
+    url = "https://api.petfinder.com/v2/oauth2/token"
+
+    payload = f'grant_type=client_credentials&client_id={API_KEY}&client_secret={API_SECRET}'
+    headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+    access_results = response.json()
+    print(type(response))
+    print(access_results['access_token'])
+    return access_results['access_token']
 
 @app.route("/animal-search")
 # DO THIS IN POSTMAN
 def animal_search_request():
     species = request.args.get('species')
-    location_state = request.args.get('location_state')
+    animal_location = request.args.get('animal-location')
     animal_age = request.args.get('animal_age')
-
+    # BLOCKED - how to add a header in a GET request to hold access token?
 
     url = 'https://api.petfinder.com/v2/animals'
-    payload = {type=species,
-               location=location_state,
-               age=animal_age
+    payload = {'type' : species,
+               'location' : animal_location, 
+               'age' : animal_age
     }
+    access_token = request_access_token()
+    headers = {'Authorization': f'Bearer {access_token}'}
+    #response = requests.request("GET", url, headers=headers, data=payload)
 
-    return f"""<!doctype html>
-    <html>
-    <head>
-      <title>Results</title>
-    </head>
-    <body>
-      Species: {species}, Location: {location_state}, Age: {animal_age}
-    </body>
-    </html>
-    """
+    res = requests.request("GET", url, headers=headers, data=payload)
+    print(type(res))
+    print(res)
+    animal_results = res.json()
+
+    return animal_results
 
 @app.route("/user-bio")
 def userbio():

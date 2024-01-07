@@ -16,12 +16,10 @@
             <option value="dog">Dog</option>
         </select>
         <br>
-        <label for="state-select">Location of animal:</label>
-        <select name="location_state" id="state-select">
-            <!-- TODO: list of states in server, add an option for each item in the list -->
-            {% for state in location_states %}
-            <option value="{{state}}">{{state}}</option>
-            {% endfor %}
+        <label for="animal-location">Location of animal:</label>
+        <input type="text" name="animal-location" id="animal-location">
+      
+
         </select>
         <br>
         <div>
