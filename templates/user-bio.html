@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Cloudrr User{% endblock %}
+
+{% block body %}
+
+
+
+
+<table class="animal-results">
+    {% for rating in ratings %}
+    <tr>
+    
+      <td class="col">{{rating.pet_rating}}</td>
+        
+      <td class="col-2">
+        <img src="{{rating.animal.image}}" style="width:200px">
+      </td>
+
+          <td class="col">
+            <div class="d-flex w-100 justify-content-between">
+              {{ rating.animal.name }}
+            </div>
+          </td>
+
+        <td id="user-pet-bio-handler">
+          <a href="{{rating.animal.petfinder_link}}">Pet Bio</a>
+        </td>
+
+        </td>
+      
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

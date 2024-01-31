@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Cloudrr Search{% endblock %}
+
+{% block body %}
+
+<div>SEARCH STUFF</div>
+
+<div id="animal-search">
+    <!-- "species": "dog",
+    "location": "OR",
+    "age": "young", -->
+    <form action="/animal-search">
+        <label for="species-select">Type of animal:</label>
+        <select name="species" id="species-select">
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+        </select>
+        <br>
+        <label for="animal-location">Location of animal:</label>
+        <input type="text" name="animal-location" id="animal-location">
+      
+
+        </select>
+        <br>
+        <div>
+            <span>Age of animal</span><br>
+            <input type="checkbox" name="animal_age" value="baby" id="age-baby-check">
+            <label for="age-baby-check">Baby</label>
+            
+            <input type="checkbox" name="animal_age" value="young" id="age-young-check">
+            <label for="age-young-check">Young</label>
+
+            <input type="checkbox" name="animal_age" value="adult" id="age-adult-check">
+            <label for="age-adult-check">Adult</label>
+
+            <input type="checkbox" name="animal_age" value="young" id="age-senior-check">
+            <label for="age-senior-check">Senior</label>
+        </div>
+        <input type="submit">
+    </form>
+
+
+
+</div>
+{% endblock %}

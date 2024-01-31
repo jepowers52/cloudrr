@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Cloudrr Search{% endblock %}
+
+{% block body %}
+<section id="result-preview">
+   <table class="animal-results">
+      {% for animal in results.animals %}
+      <tr>
+        {% if animal['photos'] %}
+
+          
+        <td class="col-2">
+          <img src="{{animal['photos'][0]['small']}}">
+        </td>
+
+            <td class="col">
+              <div class="d-flex w-100 justify-content-between">
+                {{ animal['name'] }}
+              </div>
+            </td>
+
+          <td id="user-pet-bio-handler">
+            <a href="{{animal['url']}}">Pet Bio</a>
+          </td>
+          <td  id="user-pet-handler">   
+            <button id="{{ animal['id'] }}" class="user-rating">Pet</button>
+          </td>
+          <td id="user-pass-handler">
+            <button id="{{ animal['id'] }}" class="user-rating">Pass</button>
+          </td>
+        
+        {% endif %}
+      </tr>
+      {% endfor %}
+  </table>
+</section>
+
+
+
+  <div> 
+    
+      <script>
+        const ratingButtons = document.querySelectorAll('.user-rating');
+        for (const button of ratingButtons ) {
+          button.addEventListener('click', (evt) => {
+          const buttontext = evt.target.innerText
+
+          
+          const buttonFetchBodyJson = {
+            button_value : buttontext,
+            animal_id : evt.target.id
+          }
+
+          fetch('/store-user-rating', {
+            method: 'POST',
+            body: JSON.stringify(buttonFetchBodyJson),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+          .then((response) => response.json())
+
+});
+        };
+
+
+ 
+      </script>
+      
+
+    
+
+  </div>
+  
+
+</section>
+{% endblock %}
