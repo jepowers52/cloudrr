@@ -36,3 +36,14 @@ def get_animal_data(animal_id):
     print(response.json())
     
     return response.json()
+
+def get_animal_types():
+    types_url = "https://api.petfinder.com/v2/types"
+
+    access_token = obtain_access_token()
+
+    headers = {'Authorization': f'Bearer {access_token}'}
+
+    response = requests.request("GET", types_url, headers=headers)
+
+    return response.json()
