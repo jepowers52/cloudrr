@@ -3,6 +3,23 @@
 
 {% block body %}
 
+<label for="exampleDataList" class="form-label">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+  <option value="San Francisco">
+  <option value="New York">
+  <option value="Seattle">
+  <option value="Los Angeles">
+  <option value="Chicago">
+</datalist>
+
+
+<div id="animal-type-test">
+    SHOULD BE REPLACED?
+</div>
+
+
+
 <div>SEARCH STUFF</div>
 
 <div id="animal-search">
@@ -40,6 +57,57 @@
     </form>
 
 
+
+</div>
+
+
+<div>
+    <script>
+
+
+        // when this page loads, we'll fetch for all data within animal-types.json 
+
+        // fetch('/animal-types', {
+        //     method: 'POST',
+        //     body: JSON.stringify(buttonFetchBodyJson),
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //   })
+        //   .then((response) => response.json())
+
+
+
+
+
+        // store the response data in a variable --> animalData = fetch response
+        // create an eventlistener for animal selection changes
+
+        const testInput = document.querySelector('#exampleDataList');
+        testInput.addEventListener('change', () => {
+        console.log(this.value);
+        fetch('/animal-types')
+            .then((response) => response.text())
+            .then((responseData) => {
+                document.querySelector('#animal-type-test').innerText = responseData;
+            });
+        });
+
+
+        // specieSelect.addEventListener('change', () => {
+        //      const animalSelected = speciesSelected.value ex.dog  .forEach - one line for loop
+        //      animalData.forEach((animal) => {
+        //          if animal.name === animalSelected {
+        //             dropdownQuerySelector.add(animal.coats)
+        //             dropdownQuerySelector.add(animal.colors)
+        //          }
+        //      }) 
+        // })
+
+
+
+
+    </script>
 
 </div>
 {% endblock %}

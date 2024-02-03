@@ -123,6 +123,15 @@ def process_login():
     
     return redirect("/")
 
+@app.route("/animal-types")
+def retrieve_animal_types():
+    # with open("data/animal-types.json") as f:
+    #     animal_type_data = json.loads(f.read())
+        # animal_type_data = f.read()
+        
+    # animal_type_data = open("data/animal-types.json")
+    return json.loads(open("data/animal-types.json"))
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
