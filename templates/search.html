@@ -87,10 +87,12 @@
         testInput.addEventListener('change', () => {
         console.log(this.value);
         fetch('/animal-types')
-            .then((response) => response.text())
+            .then((response) => response.json())
+            console.log(response)
             .then((responseData) => {
                 document.querySelector('#animal-type-test').innerText = responseData;
             });
+        console.log(responseData)
         });
 
 
