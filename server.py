@@ -129,7 +129,7 @@ def retrieve_animal_types():
         animal_type_data = json.loads(f.read())
         animal_type_json = json.dumps(animal_type_data)
         # animal_type_data = f.read()
-    print(animal_type_json)
+    # print(animal_type_json)
     # animal_type_data = open("data/animal-types.json")
     return animal_type_json
 

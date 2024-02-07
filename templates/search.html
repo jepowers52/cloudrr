@@ -3,24 +3,6 @@
 
 {% block body %}
 
-<label for="exampleDataList" class="form-label">Datalist example</label>
-<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-<datalist id="datalistOptions">
-  <option value="San Francisco">
-  <option value="New York">
-  <option value="Seattle">
-  <option value="Los Angeles">
-  <option value="Chicago">
-</datalist>
-
-
-<div id="animal-type-test">
-    SHOULD BE REPLACED?
-</div>
-
-
-
-<div>SEARCH STUFF</div>
 
 <div id="animal-search">
     <!-- "species": "dog",
@@ -29,12 +11,19 @@
     <form action="/animal-search">
         <label for="species-select">Type of animal:</label>
         <select name="species" id="species-select">
-            <option value="cat">Cat</option>
-            <option value="dog">Dog</option>
+            <option value="Select">Select one</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="Small & Furry">Small & Furry</option>
+            <option value="Horse">Horse</option>
+            <option value="Bird">Bird</option>
+            <option value="Scales, Fins & Other">Scales, Fins & Other</option>
+            <option value="Barnyard">Barnyard</option>
         </select>
         <br>
         <label for="animal-location">Location of animal:</label>
-        <input type="text" name="animal-location" id="animal-location">
+        <input type="text" name="animal-location" id="animal-location" placeholder="Enter City, State, or ZIP">
       
 
         </select>
@@ -50,10 +39,27 @@
             <input type="checkbox" name="animal_age" value="adult" id="age-adult-check">
             <label for="age-adult-check">Adult</label>
 
-            <input type="checkbox" name="animal_age" value="young" id="age-senior-check">
+            <input type="checkbox" name="animal_age" value="senior" id="age-senior-check">
             <label for="age-senior-check">Senior</label>
         </div>
+
+        <label for="animalGenderList" class="form-label">Gender:</label>
+        <input class="form-control" list="animalGenderOptions" id="animalGenderList" placeholder="Type or Click to view options">
+        <datalist id="animalGenderOptions">
+        </datalist>
+
+        <div id="animalCoatContainer"></div>
+
+        <label for="animalColorList" class="form-label">Color:</label>
+        <input class="form-control" list="animalColorOptions" id="animalColorList" placeholder="Type or Click to view options">
+        <datalist id="animalColorOptions">
+        </datalist>
+        
+        <br>
         <input type="submit">
+
+
+
     </form>
 
 
@@ -66,46 +72,60 @@
 
 
         // when this page loads, we'll fetch for all data within animal-types.json 
-
-        // fetch('/animal-types', {
-        //     method: 'POST',
-        //     body: JSON.stringify(buttonFetchBodyJson),
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //   })
-        //   .then((response) => response.json())
-
-
-
-
-
         // store the response data in a variable --> animalData = fetch response
-        // create an eventlistener for animal selection changes
 
-        const testInput = document.querySelector('#exampleDataList');
-        testInput.addEventListener('change', () => {
-        console.log(this.value);
+        // const animalData = () => (
         fetch('/animal-types')
             .then((response) => response.json())
-            console.log(response)
             .then((responseData) => {
-                document.querySelector('#animal-type-test').innerText = responseData;
-            });
-        console.log(responseData)
-        });
 
 
-        // specieSelect.addEventListener('change', () => {
-        //      const animalSelected = speciesSelected.value ex.dog  .forEach - one line for loop
-        //      animalData.forEach((animal) => {
-        //          if animal.name === animalSelected {
-        //             dropdownQuerySelector.add(animal.coats)
-        //             dropdownQuerySelector.add(animal.colors)
-        //          }
-        //      }) 
-        // })
+            // console.log('rd types', responseData.types)
+            const animalSelectElement = document.querySelector('#species-select'); // species select
+            animalSelectElement.addEventListener('change', (evt) => {
+            evt.preventDefault();
+            
+            document.querySelector('#animalGenderOptions').innerHTML = ""
+            document.querySelector('#animalCoatContainer').innerHTML = ""
 
+            document.querySelector('#animalColorOptions').innerHTML = ""
+
+            //once have selected animal, need to find index of animal in the json
+            // let animalIndex = responseData.types.indexOf(animalSelected.value)
+            // console.log('animalIndex', animalIndex)
+            
+            for (const animalType of responseData.types){
+                    // if animalType.name === 'animalSelected'
+                    
+                    if (animalType.name === animalSelectElement.value){
+                        for (const color of animalType.colors) {
+                        document.querySelector('#animalColorOptions').insertAdjacentHTML('beforeend', `<option value="${color}">`);
+
+                        }
+
+                        for (const gender of animalType.genders) {
+                            document.querySelector('#animalGenderOptions').insertAdjacentHTML('beforeend', `<option value="${gender}">`);
+
+                        }
+
+                        if (animalType.coats.length > 0) {
+                                console.log(animalType.coats)
+                                document.querySelector('#animalCoatContainer').insertAdjacentHTML('beforeend', `
+                                <label for="animalCoatList" class="form-label">Coat type:</label>
+                                <input class="form-control" list="animalCoatOptions" id="animalCoatList" placeholder="Type or Click to view options">
+                                <datalist id="animalCoatOptions">
+                                </datalist>
+                                `);
+                                for (const coat of animalType.coats) {
+                                document.querySelector('#animalCoatOptions').insertAdjacentHTML('beforeend', `<option value="${coat}">`);
+                                }
+                        }
+                    }
+            }  
+            })
+            })
+ 
+   
 
 
 
