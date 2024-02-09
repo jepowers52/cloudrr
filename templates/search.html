@@ -30,28 +30,28 @@
         <br>
         <div>
             <span>Age of animal</span><br>
-            <input type="checkbox" name="animal_age" value="baby" id="age-baby-check">
+            <input type="checkbox" name="animal-age" value="baby" id="age-baby-check">
             <label for="age-baby-check">Baby</label>
             
-            <input type="checkbox" name="animal_age" value="young" id="age-young-check">
+            <input type="checkbox" name="animal-age" value="young" id="age-young-check">
             <label for="age-young-check">Young</label>
 
-            <input type="checkbox" name="animal_age" value="adult" id="age-adult-check">
+            <input type="checkbox" name="animal-age" value="adult" id="age-adult-check">
             <label for="age-adult-check">Adult</label>
 
-            <input type="checkbox" name="animal_age" value="senior" id="age-senior-check">
+            <input type="checkbox" name="animal-age" value="senior" id="age-senior-check">
             <label for="age-senior-check">Senior</label>
         </div>
 
         <label for="animalGenderList" class="form-label">Gender:</label>
-        <input class="form-control" list="animalGenderOptions" id="animalGenderList" placeholder="Type or Click to view options">
+        <input class="form-control" name="animal-gender" list="animalGenderOptions" id="animalGenderList" placeholder="Type or Click to view options">
         <datalist id="animalGenderOptions">
         </datalist>
 
         <div id="animalCoatContainer"></div>
 
         <label for="animalColorList" class="form-label">Color:</label>
-        <input class="form-control" list="animalColorOptions" id="animalColorList" placeholder="Type or Click to view options">
+        <input class="form-control" name="animal-color" list="animalColorOptions" id="animalColorList" placeholder="Type or Click to view options">
         <datalist id="animalColorOptions">
         </datalist>
         
@@ -112,7 +112,7 @@
                                 console.log(animalType.coats)
                                 document.querySelector('#animalCoatContainer').insertAdjacentHTML('beforeend', `
                                 <label for="animalCoatList" class="form-label">Coat type:</label>
-                                <input class="form-control" list="animalCoatOptions" id="animalCoatList" placeholder="Type or Click to view options">
+                                <input class="form-control" name="animal-coat" list="animalCoatOptions" id="animalCoatList" placeholder="Type or Click to view options">
                                 <datalist id="animalCoatOptions">
                                 </datalist>
                                 `);

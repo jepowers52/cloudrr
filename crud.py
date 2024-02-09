@@ -15,21 +15,32 @@ import petfinder
 def create_user(username, email, password):
     """Create and return a new user."""
 
-    user = User(username=username, email=email, password=password)
+    user = User(username=username, email=email, password_hash=password)
+
+    user.set_password(password)
     return user
 
+def add_new_user():
+    #create new user
+    #add new user to db
+    pass
 
 
 def get_userid_by_username(username):
     """Return a user by username."""
 
     user = User.query.filter_by(username=username).first()
-    return user.user_id
+    return user.id
 
 def get_userid_by_email(email):
 
     user = User.query.filter_by(email=email).first()
-    return user.user_id
+    return user.id
+
+def get_user_by_userid(id):
+
+    user = User.query.filter_by(id=id).first()
+    return user
 
 def get_user_by_email(email):
     """Return a user by email."""
@@ -55,10 +66,10 @@ def get_animal_by_id(animal_id):
     return Animal.query.filter_by(animal_id=animal_id).first()
 
 
-def create_pet_rating(user_id, animal_id, pet_rating):
+def create_pet_rating(id, animal_id, pet_rating):
     """Create and return new pet rating from test data."""
     new_pet = User_pet_rating(
-        user_id=user_id,
+        id=id,
         animal_id=animal_id,
         pet_rating=pet_rating
     )
@@ -71,7 +82,7 @@ def store_user_rating(user_rating_JSON):
     """Store user rating in the Database
     ex: {'button_value': 'Pet', 'animal_id': '70400762'}
     """
-    user_id = 1 #hardcoded for testing
+    id = 1 #hardcoded for testing
     animal_id = user_rating_JSON.json["animal_id"]
     pet_rating = user_rating_JSON.json["button_value"]
 
@@ -79,17 +90,15 @@ def store_user_rating(user_rating_JSON):
     new_animal = petfinder.get_animal_data(animal_id)
     add_animal_to_db(new_animal)
 
-    new_rating = create_pet_rating(user_id, animal_id, pet_rating)
+    new_rating = create_pet_rating(id, animal_id, pet_rating)
     
     model.db.session.add(new_rating)
     model.db.session.commit() 
     
-def get_ratings_by_user():
-    user_email = session["user_email"] 
-    user_id = get_userid_by_email(user_email)
-    user_ratings = User_pet_rating.query.filter_by(user_id=user_id).all()
+def get_ratings_by_user(user_email):
+    id = get_userid_by_email(user_email)
+    user_ratings = User_pet_rating.query.filter_by(id=id).all()
     
-    print(user_ratings)
     return user_ratings
 
 
