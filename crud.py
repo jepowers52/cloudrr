@@ -14,16 +14,19 @@ import petfinder
 
 def create_user(username, email, password):
     """Create and return a new user."""
+    if not get_user_by_email(email):
+        user = User(username=username, email=email, password_hash=password)
 
-    user = User(username=username, email=email, password_hash=password)
+        user.set_password(password)
 
-    user.set_password(password)
-    return user
+        model.db.session.add(user)
+        model.db.session.commit() 
+        return user
+    
+    else:
+        return None
 
-def add_new_user():
-    #create new user
-    #add new user to db
-    pass
+
 
 
 def get_userid_by_username(username):
@@ -58,6 +61,10 @@ def create_animal(animal_id, species, location, age, name, image, petfinder_link
         image=image,
         petfinder_link=petfinder_link,
     )
+    
+    model.db.session.add(animal)
+    model.db.session.commit() 
+
     return animal
 
 
@@ -78,11 +85,11 @@ def create_pet_rating(id, animal_id, pet_rating):
 
 
 
-def store_user_rating(user_rating_JSON):
+def store_user_rating(user_rating_JSON, email):
     """Store user rating in the Database
     ex: {'button_value': 'Pet', 'animal_id': '70400762'}
     """
-    id = 1 #hardcoded for testing
+    id = get_userid_by_email(email)
     animal_id = user_rating_JSON.json["animal_id"]
     pet_rating = user_rating_JSON.json["button_value"]
 

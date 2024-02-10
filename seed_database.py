@@ -32,12 +32,12 @@ for animal in animal_data:
         animal["image"],
         animal["petfinder_link"],
         )
+    crud.create_animal(animal_id, species, location, age, name, image, petfinder_link)
+    # db_animal = crud.create_animal(animal_id, species, location, age, name, image, petfinder_link)
+#     animals_in_db.append(db_animal)
 
-    db_animal = crud.create_animal(animal_id, species, location, age, name, image, petfinder_link)
-    animals_in_db.append(db_animal)
-
-model.db.session.add_all(animals_in_db)
-model.db.session.commit()    
+# model.db.session.add_all(animals_in_db)
+# model.db.session.commit()    
 
 ############################ users ########################################
 
@@ -52,11 +52,12 @@ for user in user_data:
         user["email"],
         user["password"],
     )
-    db_user = crud.create_user(username, email, password)
-    users_in_db.append(db_user)
+    crud.create_user(username, email, password)
+    # db_user = crud.create_user(username, email, password)
+    # users_in_db.append(db_user)
 
-model.db.session.add_all(users_in_db)
-model.db.session.commit() 
+# model.db.session.add_all(users_in_db)
+# model.db.session.commit() 
 
 ############################## pet ratings ######################################
 
