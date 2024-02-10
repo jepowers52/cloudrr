@@ -54,7 +54,7 @@ def searchpage():
 
 @app.route("/animal-search")
 def animal_search_request():
-    type = request.args.get('species')
+    species = request.args.get('species')
     location = request.args.get('animal-location')
     age = request.args.get('animal-age')
     gender = request.args.get('animal-gender')
@@ -62,7 +62,7 @@ def animal_search_request():
     coat = request.args.get('animal-coat')
 
     url = 'https://api.petfinder.com/v2/animals'
-    payload = {'type' : type,
+    payload = {'type' : species,
                'location' : location, 
                'age' : age,
                'color' : color,
@@ -120,12 +120,12 @@ def user_login():
     if user:
         if user.check_password(password):
             login_user(user)
-            flash(f"Welcome back {current_user.username}!")
+            flash(f"Welcome back {current_user.username}!", 'success')
             return redirect('/user-bio')
-        flash("The email or password you entered was incorrect.")
+        flash("The email or password you entered was incorrect.", 'error')
         return redirect('/login-page')
     else:
-        flash("The email or password you entered was incorrect.")
+        flash("The email or password you entered was incorrect.", 'error')
         return redirect('/login-page')
 
 @app.route('/logout')
@@ -149,7 +149,7 @@ def create_user():
 
     new_user = crud.create_user(username, email, password)
     if new_user:
-        flash(f"Welcome {username}!")
+        flash(f"Welcome {username}!", 'success')
         return redirect('/login-page')
     else:
         flash("User already exisits. Please login.")
