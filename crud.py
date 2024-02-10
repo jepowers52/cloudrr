@@ -4,13 +4,10 @@ from flask import Flask, session
 import model
 from model import db, User, Animal, User_pet_rating, connect_to_db
 import requests
-# import server
 import os
 import json
 import petfinder
 
-# db = SQLAlchemy()
-# model.connect_to_db(server.app)
 
 def create_user(username, email, password):
     """Create and return a new user."""
@@ -25,8 +22,6 @@ def create_user(username, email, password):
     
     else:
         return None
-
-
 
 
 def get_userid_by_username(username):
@@ -68,7 +63,6 @@ def create_animal(animal_id, species, location, age, name, image, petfinder_link
     return animal
 
 
-
 def get_animal_by_id(animal_id):
     return Animal.query.filter_by(animal_id=animal_id).first()
 
@@ -84,7 +78,6 @@ def create_pet_rating(id, animal_id, pet_rating):
     return new_pet
 
 
-
 def store_user_rating(user_rating_JSON, email):
     """Store user rating in the Database
     ex: {'button_value': 'Pet', 'animal_id': '70400762'}
@@ -92,7 +85,6 @@ def store_user_rating(user_rating_JSON, email):
     id = get_userid_by_email(email)
     animal_id = user_rating_JSON.json["animal_id"]
     pet_rating = user_rating_JSON.json["button_value"]
-
 
     new_animal = petfinder.get_animal_data(animal_id)
     add_animal_to_db(new_animal)
@@ -108,8 +100,6 @@ def get_ratings_by_user(user_email):
     
     return user_ratings
 
-
-    
 
 def add_animal_to_db(animal_json):
     """Ad animal to db if not already included"""

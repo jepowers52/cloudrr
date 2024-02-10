@@ -2,9 +2,6 @@
 
 import os
 import json
-# from random import choice, randint
-# from datetime import datetime
-
 import crud
 import model
 import server
@@ -33,11 +30,6 @@ for animal in animal_data:
         animal["petfinder_link"],
         )
     crud.create_animal(animal_id, species, location, age, name, image, petfinder_link)
-    # db_animal = crud.create_animal(animal_id, species, location, age, name, image, petfinder_link)
-#     animals_in_db.append(db_animal)
-
-# model.db.session.add_all(animals_in_db)
-# model.db.session.commit()    
 
 ############################ users ########################################
 
@@ -53,20 +45,12 @@ for user in user_data:
         user["password"],
     )
     crud.create_user(username, email, password)
-    # db_user = crud.create_user(username, email, password)
-    # users_in_db.append(db_user)
 
-# model.db.session.add_all(users_in_db)
-# model.db.session.commit() 
 
 ############################## pet ratings ######################################
 
 with open('data/test-pet-data.json') as file3:
     pet_rating_data = json.loads(file3.read())
-
-    # { "username": "user2",
-    # "animal_id": "dog-004",
-    #  "pet": "FALSE"},
 
 pet_ratings_in_db = []
 
@@ -78,8 +62,6 @@ for rating in pet_rating_data:
         rating["pet_rating"],
     )
 
-
-    # pet_rating = bool(pet_rating)
     user_id = crud.get_userid_by_username(username)
 
     db_pet_rating = crud.create_pet_rating(user_id, animal_id, pet_rating)
@@ -88,5 +70,4 @@ for rating in pet_rating_data:
 model.db.session.add_all(pet_ratings_in_db)
 model.db.session.commit() 
 
-####################################################################
 
