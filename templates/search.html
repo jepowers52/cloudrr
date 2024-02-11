@@ -3,6 +3,11 @@
 
 {% block body %}
 
+<div class="test"> Let's look at some pets!</div>
+<br>
+<br>
+<div class="callout">CALLOUT TEST</div>
+<br>
 
 <div id="animal-search">
     <!-- "species": "dog",
@@ -28,19 +33,24 @@
 
         </select>
         <br>
-        <div>
+        <div class="animal-age-selector">
             <span>Age of animal</span><br>
-            <input type="checkbox" name="animal-age" value="baby" id="age-baby-check">
-            <label for="age-baby-check">Baby</label>
-            
-            <input type="checkbox" name="animal-age" value="young" id="age-young-check">
-            <label for="age-young-check">Young</label>
-
-            <input type="checkbox" name="animal-age" value="adult" id="age-adult-check">
-            <label for="age-adult-check">Adult</label>
-
-            <input type="checkbox" name="animal-age" value="senior" id="age-senior-check">
-            <label for="age-senior-check">Senior</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="animal-age" value="baby" id="age-baby-check">
+                <label class="form-check-label" for="age-baby-check">Baby</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="animal-age" value="young" id="age-young-check">
+                <label class="form-check-label" for="age-young-check">Young</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="animal-age" value="adult" id="age-adult-check">
+                <label class="form-check-label" for="age-adult-check">Adult</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="animal-age" value="senior" id="age-senior-check">
+                <label class="form-check-label" for="age-senior-check">Senior</label>
+            </div>
         </div>
 
         <label for="animalGenderList" class="form-label">Gender:</label>

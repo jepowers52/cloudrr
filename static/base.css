@@ -6,3 +6,22 @@
 .success {
     color: green;
 }
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+  }
+
+.callout {
+font-family: 'Tilt Warp', sans-serif;
+font-size: 32px;
+}
+
+body.container {
+    background: url("so-white.png") no-repeat center center;
+    background-size: cover;
+  }
+
+  .blue-body {
+    background: rgba(21, 100, 121, 0.35); 
+  }
