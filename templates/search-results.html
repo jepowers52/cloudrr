@@ -3,7 +3,7 @@
 
 {% block body %}
 <section id="result-preview">
-   <table class="animal-results">
+   <table class="animal-results bx-shdw">
       {% for animal in results.animals %}
       <tr>
         {% if animal['photos'] %}
@@ -23,10 +23,10 @@
             <a href="{{animal['url']}}">Pet Bio</a>
           </td>
           <td  id="user-pet-handler">   
-            <button id="{{ animal['id'] }}" class="user-rating">Pet</button>
+            <button id="{{ animal['id'] }}" class="user-rating button-64">Pet</button>
           </td>
           <td id="user-pass-handler">
-            <button id="{{ animal['id'] }}" class="user-rating">Pass</button>
+            <button id="{{ animal['id'] }}" class="user-rating button-64">Pass</button>
           </td>
         
         {% endif %}
