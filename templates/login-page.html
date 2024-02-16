@@ -3,22 +3,27 @@
 
 {% block body %}
 
-<div id="login-form">
-    <h2>Log In</h2>
-    <form action="/login" method="POST">
+<div class="login-form" id="login-form">
+
+    <form  action="/login" method="POST">
       <p>
-        Email <input type="text" name="email">
+        <label for="email" class="login-input form-label">Email</label>
+        <br>
+        <input type="text" name="email">
       </p>
     
       <p>
-        Password <input type="password" name="password">
+        <label for="password" class="login-input form-label">Password</label>
+        <br>
+        <input type="password" name="password">
       </p>
     
       <p>
         <input type="submit">
-        <a href="/create-user">Create new account</a>
+        <button class="button-85"><a href="/create-user">Create new account</a></button>
       </p>
     </form>
-    </div>
+  </div>
+
 
 {% endblock %}
