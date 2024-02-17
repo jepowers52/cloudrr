@@ -5,12 +5,12 @@
 <section id="result-preview">
    <table class="animal-results bx-shdw">
       {% for animal in results.animals %}
-      <tr>
+      <tr >
         {% if animal['photos'] %}
 
           
         <td class="col-2">
-          <img src="{{animal['photos'][0]['small']}}">
+          <img class="search-result-pic" src="{{animal['photos'][0]['medium']}}">
         </td>
 
             <td class="col">
@@ -20,7 +20,7 @@
             </td>
 
           <td id="user-pet-bio-handler">
-            <a href="{{animal['url']}}">Pet Bio</a>
+            <a href="{{animal['url']}}"><button class="button-36">Pet Bio</button></a>
           </td>
           <td  id="user-pet-handler">   
             <button id="{{ animal['id'] }}" class="user-rating button-64">Pet</button>
@@ -31,6 +31,8 @@
         
         {% endif %}
       </tr>
+      <tr></tr>
+      
       {% endfor %}
   </table>
 </section>

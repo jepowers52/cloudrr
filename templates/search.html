@@ -10,7 +10,7 @@
     "location": "OR",
     "age": "young", -->
     <form action="/animal-search">
-        <label for="species-select">Type of animal:</label>
+        <label for="species-select">TYPE OF ANIMAL</label>
         <select name="species" id="species-select">
             <option value="Select">Select one</option>
             <option value="Dog">Dog</option>
@@ -24,13 +24,13 @@
         </select>
         <br>
         <label for="animal-location">Location of animal:</label>
-        <input type="text" name="animal-location" id="animal-location" placeholder="Enter City, State, or ZIP">
+        <input type="text" class="form-control" name="animal-location" id="animal-location" placeholder="Enter City, State, or ZIP">
       
 
         </select>
-        <br>
+        
         <div class="animal-age-selector">
-            <span>Age of animal</span><br>
+            <span>Age of animal:</span><br>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" name="animal-age" value="baby" id="age-baby-check">
                 <label class="form-check-label" for="age-baby-check">Baby</label>
@@ -62,7 +62,7 @@
         </datalist>
         
         <br>
-        <input type="submit">
+        <input class="button-64" type="submit">
 
 
 
