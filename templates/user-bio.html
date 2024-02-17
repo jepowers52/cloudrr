@@ -6,24 +6,37 @@
 
 
 
-<table class="animal-results">
+<table class="animal-results bx-shdw">
     {% for rating in ratings %}
     <tr>
     
-      <td class="col">{{rating.pet_rating}}</td>
+      <td class="col">
+        {%if rating.pet_rating == "Pet"%}
+
+        <img src="/static/heart-fill.svg" alt="Heart" width="32" height="32" class="rating-heart">
+
+        {% else %}
+
+        <img src="/static/heartbreak.svg" alt="Heart" width="32" height="32" class="rating-heart">
+
+        {% endif %}
+      </td>
         
       <td class="col-2">
-        <img src="{{rating.animal.image}}" style="width:200px">
+        <img class="user-bio-pic" src="{{rating.animal.image}}" style="width:200px">
       </td>
 
           <td class="col">
             <div class="d-flex w-100 justify-content-between">
               {{ rating.animal.name }}
+              
             </div>
           </td>
 
         <td id="user-pet-bio-handler">
-          <a href="{{rating.animal.petfinder_link}}">Pet Bio</a>
+          
+          <a href="{{rating.animal.petfinder_link}}"><button class="button-36">Pet Bio</button></a>
+
         </td>
 
         </td>
