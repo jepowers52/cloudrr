@@ -86,6 +86,14 @@ font-weight: 800;
   margin: 50px;
 }
 
+.animal-results {
+  background-image: url("table-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-weight: 800;
+  font-size: 36px;
+ }
+
 
 /* ~~~~~~~~~~~ NAV BAR ~~~~~~~~~~~ */
 
