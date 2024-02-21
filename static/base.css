@@ -1,17 +1,14 @@
 
 /* ~~~~~~~~~~~ FLASH MESSAGES ~~~~~~~~~~~ */
-.error {
-    color: rgba(253, 248, 254, 1);
-    text-shadow: 5px 5px 10px 6EA8DD;
-    background: rgba(207, 95, 243, 1);
-}
 
-
-.success {
-    color: green;
-}
-
-
+.flash-message {
+  background: #6EA8DD ;
+  box-shadow: 0px 2px 3px 2px #599bd9;
+  text-align: center;
+  font-weight: 800;
+  font-size: 36px;
+  
+ }
 
 
 /* ~~~~~~~~~~~ FONTS ~~~~~~~~~~~ */
@@ -33,6 +30,7 @@ font-weight: 800;
   
   }
 
+
 /* ~~~~~~~~~~~ LOGO ~~~~~~~~~~~ */
 
 #cloudrr-logo {
@@ -41,6 +39,7 @@ font-weight: 800;
   margin-right: auto;
 
 }
+
 
 /* ~~~~~~~~~~~ COLORS - OPAQUE BACKGROUND ~~~~~~~~~~~ */
 
@@ -59,31 +58,24 @@ font-weight: 800;
 .cloudrr-lt-blue-a1 { background: rgba(110, 168, 221, 1); 
 }
 
+
 /* ~~~~~~~~~~~ COLORS - TEXT ~~~~~~~~~~~ */
 
 .cloudrr-txt-white-a1 { color: rgba(253, 248, 254, 1); 
 }
 
-/* .cloudrr-txt-dk-purple-a1 { background: rgba(78, 26, 115, 1); 
-}
 
-.cloudrr-txt-lt-purple-a1 { background: rgba(207, 95, 243, 1); 
-}
-
-.cloudrr-txt-dk-blue-a1 { background: rgba(36, 118, 163, 1); 
-}
-
-.cloudrr-txt-lt-blue-a1 { background: rgba(110, 168, 221, 1); 
-} */
 
 /* ~~~~~~~~~~~ SEARCH RESULTS TABLE ~~~~~~~~~~~ */
 
 .bx-shdw {
-  box-shadow: 0px 2px 2px 3px #cf5ff3;
+  box-shadow: 0px 4px 4px 6px #cf5ff3;
 }
 
 .search-result-pic {
   margin: 50px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 3px #FAEDFC;
 }
 
 .animal-results {
@@ -101,9 +93,18 @@ font-weight: 800;
 .buttons-nav{
 
 justify-content: space-around;
+}
 
+
+.nav-item:hover {
+  text-shadow: 1px 1px 2px #4E1A73;
 
 }
+.navbar-brand:hover {
+  text-shadow: 1px 1px 2px #4E1A73;
+
+}
+
 
 /* ~~~~~~~~~~~ PET PASS BUTTONS ~~~~~~~~~~~ */
 
@@ -157,6 +158,7 @@ justify-content: space-around;
     min-width: 196px;
   }
 } 
+
 
 /* ~~~~~~~~~~~ LOGIN PAGE BUTTONS ~~~~~~~~~~~ */
 .button-85 {
@@ -275,9 +277,6 @@ justify-content: space-around;
   justify-content: center;
 }
 
-
-
-
 .button-64-big {
   align-items: center;
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
@@ -328,6 +327,7 @@ justify-content: space-around;
   }
 } 
 
+
 /* ~~~~~~~~~~~ LOGIN FORM ~~~~~~~~~~~ */
 .login-input-text {
   width: 100%;
@@ -336,12 +336,10 @@ justify-content: space-around;
   box-sizing: border-box;
 }
 
-
 .login-label {
   font-family: 'Manrope', sans-serif;
   font-size: 32px;
 }
-
 
 .login-form {
   display: flex;
@@ -351,7 +349,11 @@ justify-content: space-around;
 }
 
 
-/* PET BIO BUTTON */
+/* ~~~~~~~~~~~ PET BIO BUTTON ~~~~~~~~~~~ */
+
+.button-buffer{
+  margin: 10px
+}
 
 .button-36 {
   background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
@@ -386,10 +388,13 @@ justify-content: space-around;
   }
 }
 
-/* USER BIO PAGE */
+
+/* ~~~~~~~~~~~ USER BIO PAGE ~~~~~~~~~~~ */
 
 .user-bio-pic {
   margin: 15px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 3px #FAEDFC;
 }
 
 .rating-heart{

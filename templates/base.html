@@ -16,9 +16,11 @@
     <link rel="stylesheet" href="/static/base.css">
 
     {% for category, msg in get_flashed_messages(with_categories=True) %}
+      <div class="flash-message cloudrr-txt-white-a1">
       <p class="{{category}}">
         {{ msg }}
       </p>
+      </div>
     {% endfor %}
 
     {% block head %}{% endblock %}
@@ -34,9 +36,9 @@
       <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse buttons-nav" id="navbarNavAltMarkup">
-          <a class="navbar-brand" href="/">Home</a>
-          <a class="nav-item nav-link" href="/search">Search</a>
+      <div class="collapse navbar-collapse buttons-nav hover-zoom " id="navbarNavAltMarkup">
+          <a class="navbar-brand " href="/">Home</a>
+          <a class="nav-item nav-link " href="/search">Search</a>
           <a class="nav-item nav-link" href="/user-bio">User Bio</a>
           <a class="nav-item nav-link" href="/login-page">Login</a>
           <a class="nav-item nav-link" href="/logout">Logout</a>
